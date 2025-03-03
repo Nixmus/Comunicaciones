@@ -118,10 +118,3 @@ s4= mt_filtrada3
 nombre= "filtradas"
 
 graficas3x1(nombre, s1, s2, s3, s4, t)
-
-s1=mt
-s2=mt_filtrada
-
-nombre= "filtradas"
-
-graficas2x1(nombre, s1, s2, t)
