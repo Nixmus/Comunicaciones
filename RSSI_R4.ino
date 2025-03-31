@@ -6,6 +6,7 @@ const char* password = "NANANANA";      // Reemplaza con tu contraseña
 
 // Tiempo máximo de espera para conexión (milisegundos)
 const unsigned long TIMEOUT_MS = 20000; // 20 segundos
+long x,x1,Rssi1,n,rssi;
 
 void setup() {
   Serial.begin(9600);
@@ -49,7 +50,7 @@ void loop() {
   }
   
   // Si está conectado, muestra la potencia de la señal
-  long rssi = WiFi.RSSI();
+  rssi = WiFi.RSSI();
   
   Serial.print("Potencia de la señal: ");
   Serial.print(rssi);
@@ -65,6 +66,12 @@ void loop() {
   } else {
     Serial.println("Señal débil - considere acercarse al router");
   }
+
+  distancemeasure();
+  Serial.print("distancia del hotspot: ");
+  Serial.print(x);
+  Serial.println("\n");
+
   
   delay(5000);  // Espera 5 segundos antes de la próxima medición
 }
@@ -104,4 +111,14 @@ void handleConnectionFailure() {
   
   Serial.println("Reintentando conexión...");
   WiFi.begin(ssid, password); // Intenta reconectar
+}
+
+void distancemeasure() {
+
+  x1= 0;
+  Rssi1= -19;
+  n= 1;
+
+  x= x1*10^((Rssi1-rssi)/10*n);
+
 }
