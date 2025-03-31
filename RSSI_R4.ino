@@ -6,7 +6,8 @@ const char* password = "NANANANA";      // Reemplaza con tu contraseña
 
 // Tiempo máximo de espera para conexión (milisegundos)
 const unsigned long TIMEOUT_MS = 20000; // 20 segundos
-long x,x1,Rssi1,n,rssi;
+long rssi;
+float x, x1, Rssi1, n, exponente;
 
 void setup() {
   Serial.begin(9600);
@@ -114,11 +115,10 @@ void handleConnectionFailure() {
 }
 
 void distancemeasure() {
-
-  x1= 0;
-  Rssi1= -19;
-  n= 1;
-
-  x= x1*10^((Rssi1-rssi)/10*n);
-
+  x1 = 1.0;      // Distancia de referencia en metros (1m)
+  Rssi1 = -39.0; // RSSI medido a 1 metro (ajústalo según medición real)
+  n = 1.25;       // Factor de atenuación (usa 2.0, 2.5, 3.0, etc.)
+  
+  exponente = (Rssi1 - rssi) / (10.0 * n);  // Cálculo intermedio
+  x = x1 * pow(10.0, exponente);  // Fórmula corregida
 }
