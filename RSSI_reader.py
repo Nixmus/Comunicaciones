@@ -13,8 +13,8 @@ led_wifi = Pin(19, Pin.OUT)
 led_ready = Pin(16, Pin.OUT)
 
 # WiFi config
-WIFI_NETWORK = "Redmi"
-WIFI_PASS = "capitancp"
+WIFI_NETWORK = "Poco x6 Pro"
+WIFI_PASS = "ayoyo"
 
 def connect_wifi():
     wifi = network.WLAN(network.STA_IF)
